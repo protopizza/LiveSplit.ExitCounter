@@ -107,6 +107,7 @@ namespace LiveSplit.UI.Components
             CounterNameLabel.Brush = new SolidBrush(Settings.OverrideTextColor ? Settings.CounterTextColor : state.LayoutSettings.TextColor);
             CounterNameLabel.HasShadow = state.LayoutSettings.DropShadows;
             CounterNameLabel.ShadowColor = state.LayoutSettings.ShadowsColor;
+            CounterNameLabel.OutlineColor = state.LayoutSettings.TextOutlineColor;
             CounterNameLabel.Draw(g);
 
             // Set Counter Value Label.
@@ -120,6 +121,7 @@ namespace LiveSplit.UI.Components
             CounterValueLabel.Brush = new SolidBrush(Settings.OverrideTextColor ? Settings.CounterValueColor : state.LayoutSettings.TextColor);
             CounterValueLabel.HasShadow = state.LayoutSettings.DropShadows;
             CounterValueLabel.ShadowColor = state.LayoutSettings.ShadowsColor;
+            CounterValueLabel.OutlineColor = state.LayoutSettings.TextOutlineColor;
             CounterValueLabel.Draw(g);
         }
 

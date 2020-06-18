@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LiveSplit</RootNamespace>
-    <AssemblyName>LiveSplit.Counter</AssemblyName>
+    <AssemblyName>LiveSplit.ExitCounter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -59,19 +59,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Components\Counter.cs" />
-    <Compile Include="UI\Components\CounterComponent.cs" />
-    <Compile Include="UI\Components\CounterComponentFactory.cs" />
-    <Compile Include="UI\Components\CounterComponentSettings.cs">
+    <Compile Include="UI\Components\ExitCounterComponent.cs" />
+    <Compile Include="UI\Components\ExitCounterComponentFactory.cs" />
+    <Compile Include="UI\Components\ExitCounterComponentSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Components\CounterComponentSettings.Designer.cs">
-      <DependentUpon>CounterComponentSettings.cs</DependentUpon>
+    <Compile Include="UI\Components\ExitCounterComponentSettings.Designer.cs">
+      <DependentUpon>ExitCounterComponentSettings.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\Components\CounterComponentSettings.resx">
-      <DependentUpon>CounterComponentSettings.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Components\ExitCounterComponentSettings.resx">
+      <DependentUpon>ExitCounterComponentSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +90,7 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

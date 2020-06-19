@@ -131,19 +131,18 @@ namespace LiveSplit.UI.Components
 
         public void Update(IInvalidator invalidator, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            try
-            {
-                if (Settings.Hook != null)
-                    Settings.Hook.Poll();
-            }
-            catch { }
-
             int splitMinusOne = 0;
             try
             {
                 splitMinusOne = int.Parse(state.CurrentSplit.Name) - 1;
             }
-            catch { }
+            catch {
+                try
+                {
+                    splitMinusOne = Math.Max(0, state.CurrentSplitIndex);
+                }
+                catch { }
+            }
 
             ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + Settings.TotalExitCount.ToString();
 

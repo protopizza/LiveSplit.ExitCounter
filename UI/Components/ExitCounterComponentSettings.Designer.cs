@@ -31,14 +31,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkColor = new System.Windows.Forms.CheckBox();
+            this.chkOverrideColor = new System.Windows.Forms.CheckBox();
             this.btnTxtColor = new System.Windows.Forms.Button();
             this.lblTxtColor = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblFontPicker = new System.Windows.Forms.Label();
             this.btnFont = new System.Windows.Forms.Button();
-            this.chkFont = new System.Windows.Forms.CheckBox();
+            this.chkOverrideFont = new System.Windows.Forms.CheckBox();
             this.lblFont = new System.Windows.Forms.Label();
             this.cmbGradientType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -102,7 +102,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.44444F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.55556F));
-            this.tableLayoutPanel3.Controls.Add(this.chkColor, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.chkOverrideColor, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnTxtColor, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblTxtColor, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,18 +115,19 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(430, 58);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // chkColor
+            // chkOverrideColor
             // 
-            this.chkColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkColor.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.chkColor, 2);
-            this.chkColor.Location = new System.Drawing.Point(7, 6);
-            this.chkColor.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkColor.Name = "chkColor";
-            this.chkColor.Size = new System.Drawing.Size(420, 17);
-            this.chkColor.TabIndex = 0;
-            this.chkColor.Text = "Override Layout Settings";
-            this.chkColor.UseVisualStyleBackColor = true;
+            this.chkOverrideColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOverrideColor.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.chkOverrideColor, 2);
+            this.chkOverrideColor.Location = new System.Drawing.Point(7, 6);
+            this.chkOverrideColor.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkOverrideColor.Name = "chkOverrideColor";
+            this.chkOverrideColor.Size = new System.Drawing.Size(420, 17);
+            this.chkOverrideColor.TabIndex = 0;
+            this.chkOverrideColor.Text = "Override Layout Settings";
+            this.chkOverrideColor.UseVisualStyleBackColor = true;
+            this.chkOverrideColor.Click += new System.EventHandler(this.chkColorOverride_CheckedChanged);
             // 
             // btnTxtColor
             // 
@@ -170,7 +171,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel2.Controls.Add(this.lblFontPicker, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnFont, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chkFont, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.chkOverrideFont, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblFont, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
@@ -202,18 +203,19 @@
             this.btnFont.UseVisualStyleBackColor = true;
             this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
             // 
-            // chkFont
+            // chkOverrideFont
             // 
-            this.chkFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFont.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.chkFont, 2);
-            this.chkFont.Location = new System.Drawing.Point(7, 6);
-            this.chkFont.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkFont.Name = "chkFont";
-            this.chkFont.Size = new System.Drawing.Size(339, 17);
-            this.chkFont.TabIndex = 0;
-            this.chkFont.Text = "Override Layout Settings";
-            this.chkFont.UseVisualStyleBackColor = true;
+            this.chkOverrideFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOverrideFont.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.chkOverrideFont, 2);
+            this.chkOverrideFont.Location = new System.Drawing.Point(7, 6);
+            this.chkOverrideFont.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkOverrideFont.Name = "chkOverrideFont";
+            this.chkOverrideFont.Size = new System.Drawing.Size(339, 17);
+            this.chkOverrideFont.TabIndex = 0;
+            this.chkOverrideFont.Text = "Override Layout Settings";
+            this.chkOverrideFont.UseVisualStyleBackColor = true;
+            this.chkOverrideFont.Click += new System.EventHandler(this.chkFontOverride_CheckedChanged);
             // 
             // lblFont
             // 
@@ -238,6 +240,7 @@
             this.cmbGradientType.Name = "cmbGradientType";
             this.cmbGradientType.Size = new System.Drawing.Size(227, 21);
             this.cmbGradientType.TabIndex = 2;
+            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -378,11 +381,11 @@
         private System.Windows.Forms.Button btnFont;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.CheckBox chkFont;
+        private System.Windows.Forms.CheckBox chkOverrideFont;
         private System.Windows.Forms.Label lblFont;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.CheckBox chkColor;
+        private System.Windows.Forms.CheckBox chkOverrideColor;
         private System.Windows.Forms.Button btnTxtColor;
         private System.Windows.Forms.Label lblTxtColor;
         private System.Windows.Forms.ComboBox cmbGradientType;

@@ -17,7 +17,7 @@ namespace LiveSplit.UI.Components
 
         public string XMLURL => "";
 
-        public string UpdateURL => "http://livesplit.org/update/";
+        public string UpdateURL => "";
 
         public Version Version => Version.Parse("1.8.0");
     }

@@ -14,44 +14,6 @@ namespace LiveSplit.UI.Components
 {
     public partial class ExitCounterComponentSettings : UserControl
     {
-        public ExitCounterComponentSettings()
-        {
-            InitializeComponent();
-
-            Hook = new CompositeHook();
-
-            // Set default values.
-            CounterFont = new Font("Segoe UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
-            OverrideCounterFont = false;
-            CounterTextColor = Color.FromArgb(255, 255, 255, 255);
-            OverrideTextColor = false;
-            BackgroundColor = Color.Transparent;
-            BackgroundColor2 = Color.Transparent;
-            BackgroundGradient = GradientType.Plain;
-            ExitCounterText = "Exits:";
-            TotalExitCount = 0;
-
-            // Set bindings.
-            txtExitCounterText.DataBindings.Add("Text", this, "ExitCounterText");
-            numTotalExitCount.DataBindings.Add("Value", this, "TotalExitCount");
-            chkFont.DataBindings.Add("Checked", this, "OverrideCounterFont", false, DataSourceUpdateMode.OnPropertyChanged);
-            lblFontPicker.DataBindings.Add("Text", this, "CounterFontString", false, DataSourceUpdateMode.OnPropertyChanged);
-            chkColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
-            btnTxtColor.DataBindings.Add("BackColor", this, "CounterTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
-            btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
-            btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
-            cmbGradientType.DataBindings.Add("SelectedItem", this, "GradientString", false, DataSourceUpdateMode.OnPropertyChanged);
-
-            // Assign event handlers.
-            cmbGradientType.SelectedIndexChanged += cmbGradientType_SelectedIndexChanged;
-            chkFont.CheckedChanged += chkFont_CheckedChanged;
-            chkColor.CheckedChanged += chkColor_CheckedChanged;
-
-            Load += ExitCounterSettings_Load;
-        }
-
-        public CompositeHook Hook { get; set; }
-
         public Color CounterTextColor { get; set; }
         public bool OverrideTextColor { get; set; }
 
@@ -71,11 +33,38 @@ namespace LiveSplit.UI.Components
         public string ExitCounterText { get; set; }
         public int TotalExitCount { get; set; }
 
+        public ExitCounterComponentSettings()
+        {
+            InitializeComponent();
+
+            // Set default values.
+            CounterFont = new Font("Segoe UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+            OverrideCounterFont = false;
+            CounterTextColor = Color.FromArgb(255, 255, 255, 255);
+            OverrideTextColor = false;
+            BackgroundColor = Color.Transparent;
+            BackgroundColor2 = Color.Transparent;
+            BackgroundGradient = GradientType.Plain;
+            ExitCounterText = "Exits:";
+            TotalExitCount = 0;
+
+            // Set bindings.
+            txtExitCounterText.DataBindings.Add("Text", this, "ExitCounterText");
+            numTotalExitCount.DataBindings.Add("Value", this, "TotalExitCount");
+            chkOverrideFont.DataBindings.Add("Checked", this, "OverrideCounterFont", false, DataSourceUpdateMode.OnPropertyChanged);
+            lblFontPicker.DataBindings.Add("Text", this, "CounterFontString", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkOverrideColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            btnTxtColor.DataBindings.Add("BackColor", this, "CounterTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
+            cmbGradientType.DataBindings.Add("SelectedItem", this, "GradientString", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
         public void SetSettings(XmlNode node)
         {
             var element = (XmlElement)node;
+            CounterFont = SettingsHelper.GetFontFromElement(element["CounterFont"]); 
             CounterTextColor = SettingsHelper.ParseColor(element["CounterTextColor"]);
-            CounterFont = SettingsHelper.GetFontFromElement(element["CounterFont"]);
             OverrideCounterFont = SettingsHelper.ParseBool(element["OverrideCounterFont"]);
             OverrideTextColor = SettingsHelper.ParseBool(element["OverrideTextColor"]);
             BackgroundColor = SettingsHelper.ParseColor(element["BackgroundColor"]);
@@ -83,7 +72,6 @@ namespace LiveSplit.UI.Components
             GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
             ExitCounterText = SettingsHelper.ParseString(element["ExitCounterText"]);
             TotalExitCount = SettingsHelper.ParseInt(element["TotalExitCount"]);
-
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -101,10 +89,10 @@ namespace LiveSplit.UI.Components
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
             return SettingsHelper.CreateSetting(document, parent, "Version", "1.0") ^
-            SettingsHelper.CreateSetting(document, parent, "OverrideCounterFont", OverrideCounterFont) ^
-            SettingsHelper.CreateSetting(document, parent, "OverrideTextColor", OverrideTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "CounterFont", CounterFont) ^
             SettingsHelper.CreateSetting(document, parent, "CounterTextColor", CounterTextColor) ^
+            SettingsHelper.CreateSetting(document, parent, "OverrideCounterFont", OverrideCounterFont) ^
+            SettingsHelper.CreateSetting(document, parent, "OverrideTextColor", OverrideTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "BackgroundColor", BackgroundColor) ^
             SettingsHelper.CreateSetting(document, parent, "BackgroundColor2", BackgroundColor2) ^
             SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
@@ -114,8 +102,8 @@ namespace LiveSplit.UI.Components
 
         private void ExitCounterSettings_Load(object sender, EventArgs e)
         {
-            chkColor_CheckedChanged(null, null);
-            chkFont_CheckedChanged(null, null);
+            chkColorOverride_CheckedChanged(null, null);
+            chkFontOverride_CheckedChanged(null, null);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
@@ -131,17 +119,17 @@ namespace LiveSplit.UI.Components
             lblFontPicker.Text = CounterFontString;
         }
 
-        private void chkColor_CheckedChanged(object sender, EventArgs e)
+        private void chkColorOverride_CheckedChanged(object sender, EventArgs e)
         {
-            lblTxtColor.Enabled = btnTxtColor.Enabled = chkColor.Checked;
+            lblTxtColor.Enabled = btnTxtColor.Enabled = chkOverrideColor.Checked;
         }
 
-        void chkFont_CheckedChanged(object sender, EventArgs e)
+        private void chkFontOverride_CheckedChanged(object sender, EventArgs e)
         {
-            lblFont.Enabled = lblFontPicker.Enabled = btnFont.Enabled = chkFont.Checked;
+            lblFont.Enabled = lblFontPicker.Enabled = btnFont.Enabled = chkOverrideFont.Checked;
         }
 
-        void cmbGradientType_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbGradientType_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnColor1.Visible = cmbGradientType.SelectedItem.ToString() != "Plain";
             btnColor2.DataBindings.Clear();

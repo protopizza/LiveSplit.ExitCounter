@@ -144,7 +144,14 @@ namespace LiveSplit.UI.Components
                 catch { }
             }
 
-            ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + Settings.TotalExitCount.ToString();
+            if (Settings.AutoTotalCount)
+            {
+                ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + state.Run.Count;
+            }
+            else
+            {
+                ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + Settings.TotalExitCount.ToString();
+            }
 
             Cache.Restart();
             Cache["ExitCounterLabel"] = ExitCounterLabel.Text;

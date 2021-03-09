@@ -32,6 +32,7 @@ namespace LiveSplit.UI.Components
 
         public string ExitCounterText { get; set; }
         public int TotalExitCount { get; set; }
+        public bool AutoTotalCount { get; set; }
 
         public ExitCounterComponentSettings()
         {
@@ -47,6 +48,7 @@ namespace LiveSplit.UI.Components
             BackgroundGradient = GradientType.Plain;
             ExitCounterText = "Exits:";
             TotalExitCount = 0;
+            AutoTotalCount = true;
 
             // Set bindings.
             txtExitCounterText.DataBindings.Add("Text", this, "ExitCounterText");
@@ -54,6 +56,7 @@ namespace LiveSplit.UI.Components
             chkOverrideFont.DataBindings.Add("Checked", this, "OverrideCounterFont", false, DataSourceUpdateMode.OnPropertyChanged);
             lblFontPicker.DataBindings.Add("Text", this, "CounterFontString", false, DataSourceUpdateMode.OnPropertyChanged);
             chkOverrideColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkAutoTotalCount.DataBindings.Add("Checked", this, "AutoTotalCount", false, DataSourceUpdateMode.OnPropertyChanged);
             btnTxtColor.DataBindings.Add("BackColor", this, "CounterTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -72,6 +75,7 @@ namespace LiveSplit.UI.Components
             GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
             ExitCounterText = SettingsHelper.ParseString(element["ExitCounterText"]);
             TotalExitCount = SettingsHelper.ParseInt(element["TotalExitCount"]);
+            AutoTotalCount = SettingsHelper.ParseBool(element["AutoTotalCount"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -97,7 +101,8 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "BackgroundColor2", BackgroundColor2) ^
             SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
             SettingsHelper.CreateSetting(document, parent, "ExitCounterText", ExitCounterText) ^
-            SettingsHelper.CreateSetting(document, parent, "TotalExitCount", TotalExitCount);
+            SettingsHelper.CreateSetting(document, parent, "TotalExitCount", TotalExitCount) ^
+            SettingsHelper.CreateSetting(document, parent, "AutoTotalCount", AutoTotalCount);
         }
 
         private void ExitCounterSettings_Load(object sender, EventArgs e)
@@ -128,7 +133,7 @@ namespace LiveSplit.UI.Components
         {
             lblFont.Enabled = lblFontPicker.Enabled = btnFont.Enabled = chkOverrideFont.Checked;
         }
-
+        
         private void cmbGradientType_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnColor1.Visible = cmbGradientType.SelectedItem.ToString() != "Plain";

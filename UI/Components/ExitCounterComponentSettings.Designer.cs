@@ -50,6 +50,7 @@
             this.txtExitCounterText = new System.Windows.Forms.TextBox();
             this.numTotalExitCount = new System.Windows.Forms.NumericUpDown();
             this.lblTotalExitCount = new System.Windows.Forms.Label();
+            this.chkAutoTotalCount = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -82,7 +83,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(442, 271);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(442, 296);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox2
@@ -285,7 +286,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 197);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(436, 71);
+            this.groupBox4.Size = new System.Drawing.Size(436, 96);
             this.groupBox4.TabIndex = 42;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Counter";
@@ -295,6 +296,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.44F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.56F));
+            this.tableLayoutPanel5.Controls.Add(this.chkAutoTotalCount, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.lblCounterText, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtExitCounterText, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.numTotalExitCount, 1, 1);
@@ -302,11 +304,11 @@
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(430, 52);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(430, 77);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // lblCounterText
@@ -344,11 +346,26 @@
             // 
             this.lblTotalExitCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTotalExitCount.AutoSize = true;
-            this.lblTotalExitCount.Location = new System.Drawing.Point(3, 32);
+            this.lblTotalExitCount.Location = new System.Drawing.Point(3, 31);
             this.lblTotalExitCount.Name = "lblTotalExitCount";
             this.lblTotalExitCount.Size = new System.Drawing.Size(85, 13);
             this.lblTotalExitCount.TabIndex = 49;
             this.lblTotalExitCount.Text = "Total Exit Count:";
+            // 
+            // chkAutoTotalCount
+            // 
+            this.chkAutoTotalCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkAutoTotalCount.AutoSize = true;
+            this.chkAutoTotalCount.Checked = true;
+            this.chkAutoTotalCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel5.SetColumnSpan(this.chkAutoTotalCount, 2);
+            this.chkAutoTotalCount.Location = new System.Drawing.Point(7, 55);
+            this.chkAutoTotalCount.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkAutoTotalCount.Name = "chkAutoTotalCount";
+            this.chkAutoTotalCount.Size = new System.Drawing.Size(420, 17);
+            this.chkAutoTotalCount.TabIndex = 50;
+            this.chkAutoTotalCount.Text = "Use Auto Total Count";
+            this.chkAutoTotalCount.UseVisualStyleBackColor = true;
             // 
             // ExitCounterComponentSettings
             // 
@@ -357,7 +374,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ExitCounterComponentSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(456, 285);
+            this.Size = new System.Drawing.Size(456, 310);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -398,5 +415,6 @@
         private System.Windows.Forms.TextBox txtExitCounterText;
         private System.Windows.Forms.NumericUpDown numTotalExitCount;
         private System.Windows.Forms.Label lblTotalExitCount;
+        private System.Windows.Forms.CheckBox chkAutoTotalCount;
     }
 }

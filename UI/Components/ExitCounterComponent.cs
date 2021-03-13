@@ -131,26 +131,28 @@ namespace LiveSplit.UI.Components
 
         public void Update(IInvalidator invalidator, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            int splitMinusOne = 0;
-            try
-            {
-                splitMinusOne = int.Parse(state.CurrentSplit.Name) - 1;
-            }
-            catch {
-                try
-                {
-                    splitMinusOne = Math.Max(0, state.CurrentSplitIndex);
-                }
-                catch { }
-            }
+            int completedExitCount = 0;
 
             if (Settings.AutoTotalCount)
             {
-                ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + state.Run.Count;
+                completedExitCount = Math.Max(completedExitCount, state.CurrentSplitIndex);
+                ExitCounterLabel.Text = Settings.ExitCounterText + " " + completedExitCount.ToString() + "/" + state.Run.Count;
             }
             else
             {
-                ExitCounterLabel.Text = Settings.ExitCounterText + " " + splitMinusOne.ToString() + "/" + Settings.TotalExitCount.ToString();
+                try
+                {
+                    completedExitCount = int.Parse(state.CurrentSplit.Name) - 1;
+                }
+                catch
+                {
+                    try
+                    {
+                        completedExitCount = Math.Max(completedExitCount, state.CurrentSplitIndex);
+                    }
+                    catch { }
+                }
+                ExitCounterLabel.Text = Settings.ExitCounterText + " " + completedExitCount.ToString() + "/" + Settings.TotalExitCount.ToString();
             }
 
             Cache.Restart();

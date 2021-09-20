@@ -61,6 +61,14 @@ namespace LiveSplit.UI.Components
             btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbGradientType.DataBindings.Add("SelectedItem", this, "GradientString", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            // Assign event handlers.
+            this.cmbGradientType.SelectedIndexChanged += cmbGradientType_SelectedIndexChanged;
+            this.chkOverrideFont.Click += chkFontOverride_CheckedChanged;
+            this.chkOverrideColor.Click += chkColorOverride_CheckedChanged;
+            this.chkAutoTotalCount.Click += chkAutoTotalCount_CheckedChanged;
+
+            Load += ExitCounterSettings_Load;
         }
 
         public void SetSettings(XmlNode node)
@@ -109,6 +117,7 @@ namespace LiveSplit.UI.Components
         {
             chkColorOverride_CheckedChanged(null, null);
             chkFontOverride_CheckedChanged(null, null);
+            chkAutoTotalCount_CheckedChanged(null, null);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
@@ -140,6 +149,10 @@ namespace LiveSplit.UI.Components
             btnColor2.DataBindings.Clear();
             btnColor2.DataBindings.Add("BackColor", this, btnColor1.Visible ? "BackgroundColor2" : "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             GradientString = cmbGradientType.SelectedItem.ToString();
+        }
+        private void chkAutoTotalCount_CheckedChanged(object sender, EventArgs e)
+        {
+            numTotalExitCount.Enabled = lblTotalExitCount.Enabled = !chkAutoTotalCount.Checked;
         }
 
     }

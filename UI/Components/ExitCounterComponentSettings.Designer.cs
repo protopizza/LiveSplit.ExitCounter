@@ -128,7 +128,6 @@
             this.chkOverrideColor.TabIndex = 0;
             this.chkOverrideColor.Text = "Override Layout Settings";
             this.chkOverrideColor.UseVisualStyleBackColor = true;
-            this.chkOverrideColor.Click += new System.EventHandler(this.chkColorOverride_CheckedChanged);
             // 
             // btnTxtColor
             // 
@@ -216,7 +215,6 @@
             this.chkOverrideFont.TabIndex = 0;
             this.chkOverrideFont.Text = "Override Layout Settings";
             this.chkOverrideFont.UseVisualStyleBackColor = true;
-            this.chkOverrideFont.Click += new System.EventHandler(this.chkFontOverride_CheckedChanged);
             // 
             // lblFont
             // 
@@ -241,7 +239,6 @@
             this.cmbGradientType.Name = "cmbGradientType";
             this.cmbGradientType.Size = new System.Drawing.Size(227, 21);
             this.cmbGradientType.TabIndex = 2;
-            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -296,11 +293,11 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.44F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.56F));
-            this.tableLayoutPanel5.Controls.Add(this.chkAutoTotalCount, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.lblCounterText, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtExitCounterText, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.numTotalExitCount, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lblTotalExitCount, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.chkAutoTotalCount, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.numTotalExitCount, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lblTotalExitCount, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -332,7 +329,7 @@
             // numTotalExitCount
             // 
             this.numTotalExitCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numTotalExitCount.Location = new System.Drawing.Point(142, 28);
+            this.numTotalExitCount.Location = new System.Drawing.Point(142, 53);
             this.numTotalExitCount.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -346,7 +343,7 @@
             // 
             this.lblTotalExitCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTotalExitCount.AutoSize = true;
-            this.lblTotalExitCount.Location = new System.Drawing.Point(3, 31);
+            this.lblTotalExitCount.Location = new System.Drawing.Point(3, 57);
             this.lblTotalExitCount.Name = "lblTotalExitCount";
             this.lblTotalExitCount.Size = new System.Drawing.Size(85, 13);
             this.lblTotalExitCount.TabIndex = 49;
@@ -359,7 +356,7 @@
             this.chkAutoTotalCount.Checked = true;
             this.chkAutoTotalCount.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tableLayoutPanel5.SetColumnSpan(this.chkAutoTotalCount, 2);
-            this.chkAutoTotalCount.Location = new System.Drawing.Point(7, 55);
+            this.chkAutoTotalCount.Location = new System.Drawing.Point(7, 29);
             this.chkAutoTotalCount.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkAutoTotalCount.Name = "chkAutoTotalCount";
             this.chkAutoTotalCount.Size = new System.Drawing.Size(420, 17);

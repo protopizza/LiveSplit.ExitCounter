@@ -1,5 +1,8 @@
 ﻿using LiveSplit.Model;
+using LiveSplit.UI.Components;
 using System;
+
+[assembly: ComponentFactory(typeof(ExitCounterComponentFactory))]
 
 namespace LiveSplit.UI.Components
 {
@@ -19,6 +22,6 @@ namespace LiveSplit.UI.Components
 
         public string UpdateURL => "";
 
-        public Version Version => Version.Parse("1.8.0");
+        public Version Version => Version.Parse("1.8.28");
     }
 }
